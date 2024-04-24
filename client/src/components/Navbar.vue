@@ -1,13 +1,24 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
+import { AuthService } from '../services/AuthService.js';
+import { AppState } from '../AppState.js';
 
 const theme = ref(loadState('theme') || 'light')
+const account = computed(() => AppState.account)
 
 onMounted(() => {
   document.documentElement.setAttribute('data-bs-theme', theme.value)
 })
+
+async function login() {
+  AuthService.loginWithPopup()
+}
+
+async function logout() {
+  AuthService.logout({ returnTo: window.location.origin })
+}
 
 </script>
 
@@ -25,11 +36,21 @@ onMounted(() => {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse me-md-5" id="navbarText">
-      <ul class="navbar-nav me-auto w-100 d-flex justify-content-end">
+      <ul class="navbar-nav me-auto w-100 d-flex justify-content-end gap-2">
         <li>
           <router-link :to="{ name: 'About' }" class="btn text-white selectable text-uppercase">
             About
           </router-link>
+        </li>
+        <li v-if="!account">
+          <button @click="login()" class="btn border-0 text-white selectable text-uppercase">
+            Login
+          </button>
+        </li>
+        <li v-else>
+          <button @click="logout()" class="btn border-0 text-white selectable text-uppercase">
+            Logout
+          </button>
         </li>
       </ul>
     </div>

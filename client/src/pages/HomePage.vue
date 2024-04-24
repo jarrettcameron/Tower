@@ -1,45 +1,63 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { AppState } from '../AppState.js';
+import Pop from '../utils/Pop.js';
+import { eventsService } from '../services/TowerEventsService.js';
 
+const filter = ref("all")
+const events = computed(() => filter.value == 'all' ? AppState.towerEvents : AppState.towerEvents.filter(x => x.type == filter.value))
+const account = computed(() => AppState.account)
+const categories = ref([
+    {
+        name: 'All',
+        filterValue: 'all',
+        icon: 'infinity'
+    },
+    {
+        name: 'Concerts',
+        filterValue: 'concert',
+        icon: 'guitar-electric'
+    },
+    {
+        name: 'Conventions',
+        filterValue: 'convention',
+        icon: 'account-group'
+    },
+    {
+        name: 'Sports',
+        filterValue: 'sport',
+        icon: 'soccer'
+    },
+    {
+        name: 'Digital',
+        filterValue: 'digital',
+        icon: 'monitor'
+    }
+])
 
-    const categories = ref([
-        {
-            name: 'All',
-            filterValue: 'all',
-            icon: 'infinity',
-            color: '#32ce49'
-        },
-        {
-            name: 'Concerts',
-            filterValue: 'concerts',
-            icon: 'guitar-electric',
-            color: '#eb1e55'
-        },
-        {
-            name: 'Conventions',
-            filterValue: 'convention',
-            icon: 'account-group',
-            color: '#6f32fc'
-        },
-        {
-            name: 'Sports',
-            filterValue: 'sports',
-            icon: 'soccer',
-            color: '#2a57f7'
-        },
-        {
-            name: 'Digital',
-            filterValue: 'digital',
-            icon: 'monitor',
-            color: '#f07d11'
-        }
-    ])
+async function getEvents() {
+    try {
+      await eventsService.getEvents()
+    }
+    catch (error){
+      Pop.error("A problem occurred getting events.");
+    }
+}
+
+function changeFilter(f) {
+    filter.value = f
+    console.log(f)
+}
+
+onMounted(() => {
+    getEvents()
+})
 
 </script>
 
 <template>
-  <div class="container-fluid bg-gradient hero text-white d-flex flex-column">
-    <div class="row justify-content-center align-items-center flex-grow-1">
+  <div class="container-fluid bg-gradient text-white d-flex flex-column" :class="{ hero: !account }">
+    <div v-if="!account" class="row justify-content-center align-items-center flex-grow-1">
         <div class="col-lg-10 col-xl-9 col-xxl-7 col-12">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg col-md-8 col-10 order-2 order-lg-1 text-center text-lg-start">
@@ -58,6 +76,11 @@ import { ref } from 'vue';
     </div>
   </div>
   <div class="container-fluid">
+    <div v-if="account" class="p-5 pb-1 row justify-content-center">
+        <div class="col-10 text-center">
+            <h1>Explore Tower</h1>
+        </div>
+    </div>
     <div class="p-5 row justify-content-center">
         <div class="col-10">
             <h2>How Tower works</h2>
@@ -76,33 +99,35 @@ import { ref } from 'vue';
                     <div class="mt-2">
                         <h5>Start an event to invite your friends</h5>
                         <p class="text-dark mb-1">Create your own Tower event, and draw from a community of millions</p>
-                        <button class="btn text-success border-0 p-0">Create an event</button>
+                        <button :title="account ? '' : 'You must '" :disabled="account == null" class="btn text-success border-0 p-0">Create an event</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="p-5 pt-3 row justify-content-center">
-        <div class="col-10">
-            <h2>Explore top categories</h2>
+        <div class="col-lg-10 col-11">
+            <h2><span v-if="!account">Explore t</span><span v-else>T</span>op categories</h2>
         </div>
-        <div class="col-9 mt-3">
-            <div class="row gap-3">
-                <div class="btn col-md col-6 bg-info p-4 rounded gap-3 text-center" v-for="category in categories" :key="category.name">
-                    <i class="mdi fs-2 d-block" :class="`mdi-${category.icon}`" :style="`color: ${category.color};`"></i>
-                    <h5>{{ category.name }}</h5>
-                </div>
+        <div class="col-lg-9 col-11 mt-3">
+            <div class="row justify-content-center">
+                <button @click="changeFilter(category.filterValue)" class="btn col-6 col-xl col-lg-4 p-1 text-center" v-for="category in categories" :key="category.name">
+                    <div class="py-3 bg-info rounded">
+                        <i class="mdi fs-2 d-block" :class="`mdi-${category.icon}`" :style="`color: var(--cat-${category.filterValue});`"></i>
+                        <h5>{{ category.name }}</h5>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
     <div class="p-5 pt-3 row justify-content-center">
-        <div class="col-10">
+        <div class="col-lg-10 col-11">
             <h2>Upcoming events</h2>
         </div>
-        <div class="col-9 mt-3">
-            <div class="row gap-3">
-                <div class="btn col-md col-6 bg-info p-4 rounded gap-3 text-center">
-
+        <div class="col-lg-9 col-11 mt-3">
+            <div class="row g-3">
+                <div class="col-lg-4 col-6" v-for="towerEvent in events" :key="towerEvent.id">
+                    <EventCard :towerEvent="towerEvent"/>
                 </div>
             </div>
         </div>

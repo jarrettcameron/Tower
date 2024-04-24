@@ -2,6 +2,14 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
+:root {
+    --cat-all: #32ce49;
+    --cat-concert: #eb1e55;
+    --cat-convention: #6f32fc;
+    --cat-sport: #2a57f7;
+    --cat-digital: #f07d11;
+}
+
 .bg-gradient {
     background: linear-gradient(90deg, #336fe7, #8217fc) !important;
 }

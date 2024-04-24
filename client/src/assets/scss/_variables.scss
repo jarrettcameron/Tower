@@ -78,7 +78,7 @@ darken($value, calc($color-variation / 2)))
 ;
 
 .text-#{$color} {
-    --bs-color: #{$value};
+    color: #{$value};
 }
 
 .border-#{$color} {
