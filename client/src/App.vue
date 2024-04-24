@@ -7,14 +7,11 @@ import Navbar from './components/Navbar.vue'
 
 <template>
   <header>
-    <Navbar />
+    <Navbar v-if="$router.currentRoute.value.name != 'Home'" />
   </header>
   <main>
     <router-view />
   </main>
-  <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer>
 </template>
 
 <style lang="scss">

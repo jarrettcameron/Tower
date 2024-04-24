@@ -3,35 +3,25 @@
 </script>
 
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="container-fluid bg-complex text-dark">
+    <div class="row justify-content-center align-items-center" style="height: 50px;">
+        <div class="col-11">
+            <div class="row align-items-center">
+                <div class="col">
+                    <span class="fs-1 fw-bold">
+                        TOWER
+                    </span>
+                </div>
+                <div class="col text-end">
+                    <button class="btn">LOGIN</button>
+                </div>
+            </div>
+
+        </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
 
-  .home-card {
-    width: clamp(500px, 50vw, 100%);
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
-}
 </style>
