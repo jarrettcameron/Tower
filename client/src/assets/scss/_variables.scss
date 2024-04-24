@@ -7,14 +7,15 @@
 
 $light-theme: (
     "primary": #336fe7,
-    "secondary": #1D4594,
-    "success": #0cbc87,
-    "info": #17a2b8,
+    "secondary": #1c3e82,
+    "success": #32ce49,
+    "info": #f5f5f5,
     "warning": #f7c32e,
     "danger": #d6293e,
     "text": #f6d9ee,
     "page": #ffffff,
-    "dark": #14050F
+    "dark": #7f7f7f,
+    "white": #EBE9FC
 );
 
 $dark-theme: (
@@ -40,8 +41,8 @@ $default-colors: (
     "white": $white,
     "light": $light,
     "dark": $dark,
-    "accent": #5d1fef,
-    "bg": #080d16
+    "accent": #8217fc,
+    "bg": #080a0d
 );
 
 @import "bootstrap";

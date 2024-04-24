@@ -6,8 +6,8 @@ import Navbar from './components/Navbar.vue'
 </script>
 
 <template>
-  <header>
-    <Navbar v-if="$router.currentRoute.value.name != 'Home'" />
+  <header class="sticky-top">
+    <Navbar/>
   </header>
   <main>
     <router-view />

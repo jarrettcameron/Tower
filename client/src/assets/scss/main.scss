@@ -2,10 +2,17 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
-.hero-bg {
+.bg-gradient {
+    background: linear-gradient(90deg, #336fe7, #8217fc) !important;
+}
+
+.border-0:hover {
+    border: unset !important;
+}
+
+.hero {
     max-height: 170vw;
-    height: 100vh;
-    background: linear-gradient(90deg, #336fe7, #5d1fef)
+    height: calc(100vh - 60px);
 }
 
 body {
