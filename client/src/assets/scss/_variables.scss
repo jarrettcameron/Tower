@@ -6,14 +6,14 @@
 @import "../../../node_modules/bootstrap/scss/utilities";
 
 $light-theme: (
-    "primary": #066ac9,
-    "secondary": #071e3b,
+    "primary": #336fe7,
+    "secondary": #1D4594,
     "success": #0cbc87,
     "info": #17a2b8,
     "warning": #f7c32e,
     "danger": #d6293e,
     "text": #f6d9ee,
-    "page": #f6d9ee,
+    "page": #ffffff,
     "dark": #14050F
 );
 
@@ -40,7 +40,8 @@ $default-colors: (
     "white": $white,
     "light": $light,
     "dark": $dark,
-    "custom": #3ba5dc
+    "accent": #5d1fef,
+    "bg": #080d16
 );
 
 @import "bootstrap";
