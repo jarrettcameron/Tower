@@ -20,7 +20,7 @@ const props = defineProps({ towerEvent: TowerEvent })
             <div class="fw-bold card-title m-0 fs-6">{{ towerEvent.name }}</div>
             <div class="text-accent">Hosted by {{ towerEvent.creator.name }}</div>
             <div class="text-dark">{{ towerEvent.startDate.toLocaleDateString('en-us', { month: 'long', day: 'numeric' }) }} - {{ towerEvent.location }}</div>
-            <div class="mt-1 d-flex align-items-center gap-2"><span class="px-2 rounded" :class="{ 'text-success bg-success-subtle': towerEvent.status == 'Active', 'text-danger bg-danger-subtle': towerEvent.status == 'Canceled', 'text-dark bg-dark-subtle': towerEvent.status == 'Sold Out' }">{{ towerEvent.status }}</span>{{ towerEvent.ticketCount }}&nbsp;Attending</div>
+            <div class="mt-1 d-flex align-items-center gap-2"><span class="px-2 rounded" :class="{ 'text-success bg-success-subtle': towerEvent.status == 'Active', 'text-danger bg-danger-subtle': towerEvent.status == 'Canceled', 'text-dark bg-dark-subtle': towerEvent.status == 'Sold Out', 'text-accent bg-accent-subtle': towerEvent.status == 'Ended' }">{{ towerEvent.status }}</span>{{ towerEvent.ticketCount }}&nbsp;Attending</div>
         </div>
     </div>
 </template>

@@ -81,10 +81,10 @@ onMounted(() => {
         </div>
     </div>
     <div class="p-5 row justify-content-center">
-        <div class="col-xxl-8 col-lg-10 col-sm-11 col-12">
+        <div class="col-xxxl-8 col-xxl-10 col-lg-10 col-12">
             <h2>How Tower works</h2>
         </div>
-        <div class="col-xxl-7 col-lg-9 col-sm-11 col-12 mt-3">
+        <div class="col-xxxl-7 col-xxl-9 col-lg-9 col-sm-11 col-122 mt-3">
             <div class="row gap-4">
                 <div class="col-md col-12 bg-info p-4 rounded d-flex gap-3 align-items-start">
                     <i class="text-success fs-3 mdi mdi-magnify"></i>
@@ -98,17 +98,17 @@ onMounted(() => {
                     <div class="mt-2">
                         <h5>Start an event to invite your friends</h5>
                         <p class="text-dark mb-1">Create your own Tower event,<br>and draw from a community of millions</p>
-                        <button :title="account ? '' : 'You must '" :disabled="account == null" class="btn text-success border-0 p-0">Create an event</button>
+                        <button @click="$router.push('create-event')" :title="account ? '' : 'You must have an account to create an event.'" :disabled="account == null" class="btn text-success border-0 p-0">Create an event</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="p-5 pt-3 row justify-content-center">
-        <div class="col-xxl-8 col-lg-10 col-sm-11 col-12">
+        <div class="col-xxxl-8 col-xxl-10 col-lg-10 col-12">
             <h2><span v-if="!account">Explore t</span><span v-else>T</span>op categories</h2>
         </div>
-        <div class="col-xxl-7 col-lg-9 col-sm-11 col-12 mt-3">
+        <div class="col-xxxl-7 col-xxl-9 col-lg-9 col-sm-11 col-12 mt-3">
             <div class="row justify-content-center">
                 <button @click="changeFilter(category.filterValue)" class="btn col-6 col-xl col-lg-4 p-1 text-center" v-for="category in categories" :key="category.name">
                     <div class="py-3 bg-info rounded">
@@ -120,10 +120,10 @@ onMounted(() => {
         </div>
     </div>
     <div class="p-5 pt-3 row justify-content-center">
-        <div class="col-xxl-8 col-lg-10 col-sm-11 col-12">
+        <div class="col-xxxl-8 col-xxl-10 col-lg-10 col-12">
             <h2>Upcoming events</h2>
         </div>
-        <div class="col-xxl-7 col-lg-9 col-sm-11 col-12 mt-3">
+        <div class="col-xxxl-7 col-xxl-9 col-lg-9 col-sm-11 col-12 mt-3">
             <div class="row g-3">
                 <router-link :to="{ name: 'Event', params: { eventId: towerEvent.id }}" class="col-lg-4 col-sm-6 col-12" v-for="towerEvent in events" :key="towerEvent.id">
                     <EventCard :towerEvent="towerEvent"/>

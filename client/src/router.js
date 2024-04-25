@@ -17,21 +17,22 @@ const routes = [
     component: loadPage('EventPage')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: loadPage('AboutPage')
+    path: '/create-event',
+    name: 'Create Event',
+    component: loadPage('CreateEventPage'),
+    beforeEnter: authGuard
   },
   {
-    path: '/account',
-    name: 'Account',
+    path: '/dashboard',
+    name: 'Dashboard',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
   }
 ]
 
 export const router = createRouter({
-  linkActiveClass: 'router-link-active',
-  linkExactActiveClass: 'router-link-exact-active',
+  linkActiveClass: '',
+  linkExactActiveClass: '',
   history: createWebHashHistory(),
   routes
 })

@@ -15,6 +15,6 @@ export class TowerEvent {
     }
 
     get status() {
-        return this.isCanceled ? 'Canceled' : this.ticketCount >= this.capacity ? 'Sold Out' : this.startDate < new Date() ? 'Expired' : 'Active'
+        return this.isCanceled ? 'Canceled' : this.ticketCount >= this.capacity ? 'Sold Out' : this.startDate < new Date() ? 'Ended' : 'Active'
     }
 }

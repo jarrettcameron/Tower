@@ -37,9 +37,9 @@ async function logout() {
     </button>
     <div class="collapse navbar-collapse me-md-5" id="navbarText">
       <ul class="navbar-nav me-auto w-100 d-flex justify-content-end gap-2">
-        <li>
-          <router-link :to="{ name: 'About' }" class="btn text-white selectable text-uppercase">
-            About
+        <li v-if="account">
+          <router-link :to="{ name: 'Dashboard' }" class="btn text-white selectable text-uppercase">
+            Dashboard
           </router-link>
         </li>
         <li v-if="!account">
