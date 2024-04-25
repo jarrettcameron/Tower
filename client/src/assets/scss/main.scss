@@ -10,6 +10,17 @@
     --cat-digital: #f07d11;
 }
 
+.pfp {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100dvh;
+}
+
+.bg-accent-subtle {
+    background-color: #e1c7fe;
+}
+
 .bg-gradient {
     background: linear-gradient(90deg, #336fe7, #8217fc) !important;
 }
@@ -21,6 +32,12 @@
 .hero {
     max-height: 170vw;
     height: calc(100vh - 60px);
+}
+
+@media (min-height: 1080px) {
+    .hero {
+        max-height: 1080px;
+    }
 }
 
 body {
