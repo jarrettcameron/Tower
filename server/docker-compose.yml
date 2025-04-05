@@ -4,6 +4,6 @@ services:
     image: jarrettcameron/tower:latest
     restart: unless-stopped
     env_file:
-      - Tower-env
+      - tower-env
     ports:
       - "3001:3000"
