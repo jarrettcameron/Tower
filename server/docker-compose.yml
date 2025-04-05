@@ -1,9 +1,9 @@
 version: '3'
 services:
   app:
-    image: your-dockerhub-username/Tower:latest
+    image: jarrettcameron/tower:latest
     restart: unless-stopped
     env_file:
       - Tower-env
     ports:
-      - "3000:3000"
+      - "3001:3000"

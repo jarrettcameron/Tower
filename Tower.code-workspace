@@ -8,6 +8,10 @@
     {
       "path": "server",
       "name": "server"
+    },
+    {
+      "path": ".github",
+      "name": ".github"
     }
   ],
   "settings": {
