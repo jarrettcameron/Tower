@@ -18,7 +18,7 @@ const comments = computed(() => AppState.activeEventComments)
 const account = computed(() => AppState.account)
 const remainingSpots = computed(() => AppState.activeEvent?.capacity - AppState.activeEvent?.ticketCount)
 
-const isAttending = computed(() => AppState.activeEventTickets.find(x => x.accountId == account?.value.id) != null)
+const isAttending = computed(() => AppState.activeEventTickets?.find(x => x.accountId == account.value?.id) != null)
 
 const commentData = ref({
     eventId: route.params.eventId,
